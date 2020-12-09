@@ -39,4 +39,4 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'
-    - run: python3 $PWD/install.py --arch=arm-eabi
+    - run: python $PWD/install.py --arch=arm-eabi
