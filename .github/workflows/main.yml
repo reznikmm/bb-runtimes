@@ -13,8 +13,7 @@ jobs:
         python-version: '3.x'
     - run: pip3 install pycodestyle
     - name: Python stylecheck
-      run: |
-        pycodestyle arm/*.py riscv/*.py aarch64/*.py powerpc/*.py sparc/*.py support/**/*.py
+      run: pycodestyle . --exclude=examples
     - uses: ada-actions/toolchain@ce2020
       with:
         distrib: community
