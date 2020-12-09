@@ -12,15 +12,16 @@ jobs:
       with:
         python-version: '3.x'
     - run: pip3 install pycodestyle
-    - run: pycodestyle arm/*.py riscv/*.py aarch64/*.py powerpc/*.py sparc/*.py support/**/*.py
+    - name: Python stylecheck
+      run: |
+        pycodestyle arm/*.py riscv/*.py aarch64/*.py powerpc/*.py sparc/*.py support/**/*.py
+    - uses: ada-actions/toolchain@ce2020
+      with:
+        distrib: community
     - uses: ada-actions/toolchain@ce2020
       with:
         distrib: community
         target: arm-elf
-    - uses: ada-actions/toolchain@ce2020
-      with:
-        distrib: community
-        target: riscv32-elf
     - run: python3 $PWD/install.py --arch=arm-eabi
 
   win-build:
