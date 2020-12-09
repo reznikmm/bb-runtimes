@@ -7,6 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - name: Install Python 3.x (required for the testsuite)
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    - run: pip3 install pep8
+    - run: pep8 arm/*.py riscv/*.py aarch64/*.py powerpc/*.py sparc/*.py support/**/*.py
+    - run: python3 $PWD/install.py --arch=arm-eabi
     - uses: ada-actions/toolchain@ce2020
       with:
         distrib: community
@@ -15,13 +22,6 @@ jobs:
       with:
         distrib: community
         target: riscv32-elf
-    - name: Install Python 3.x (required for the testsuite)
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-    - run: pip3 install pep8
-    - run: pep8 arm/*.py riscv/*.py x86_64/*.py aarch64/*.py powerpc/*.py sparc/*.py support/**/*.py
-    - run: python3 $PWD/install.py --arch=arm-eabi
 
   win-build:
     name: Build and test on Windows
