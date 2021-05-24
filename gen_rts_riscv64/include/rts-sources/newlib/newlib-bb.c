@@ -67,7 +67,7 @@ read_console (void)
 }
 
 int
-_write (int fd, char *buf, int nbytes)
+write (int fd, char *buf, int nbytes)
 {
   int i;
 
@@ -87,26 +87,26 @@ _write (int fd, char *buf, int nbytes)
 }
 
 int
-_close (int fd)
+close (int fd)
 {
   return 0;
 }
 
 int
-_fstat (int fd, struct stat*buf)
+fstat (int fd, struct stat*buf)
 {
   return -1;
 }
 
 off_t
-_lseek (int fd, off_t offset, int whence)
+lseek (int fd, off_t offset, int whence)
 {
   errno = ESPIPE;
   return -1;
 }
 
 int
-_read (int fd, char *buf, int count)
+read (int fd, char *buf, int count)
 {
   int i;
 
@@ -134,7 +134,7 @@ extern void *__heap_start;
 extern void *__heap_end;
 
 void *
-_sbrk (int nbytes)
+sbrk (int nbytes)
 {
   static void *heap_ptr = (void *)&__heap_start;
   void *base;
