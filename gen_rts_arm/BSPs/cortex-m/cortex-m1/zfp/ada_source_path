@@ -1,0 +1,4 @@
+../../src/arch
+../src/crt0
+arch
+user_srcs
