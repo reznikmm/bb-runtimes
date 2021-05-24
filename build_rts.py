@@ -20,7 +20,7 @@ from pikeos import ArmPikeOS, ArmPikeOS42
 from arm.cortexm import Stm32, Sam, SmartFusion2, LM3S, Microbit, \
      NRF52840, NRF52832, MicrosemiM1, \
      CortexM0, CortexM0P, CortexM1, CortexM3, CortexM4, CortexM4F, \
-     CortexM7F, CortexM7DF
+     CortexM7F, CortexM7DF, CortexM23, CortexM33F, CortexM33DF
 
 # Cortex-A/R runtimes
 from arm.cortexar import TMS570, Rpi2, Rpi2Mc, Zynq7000
@@ -38,7 +38,9 @@ from m68k import M68020, M68020_SoftFloat
 from powerpc import MPC8641, MPC8349e, P2020, P5566, P5634
 
 # riscv
-from riscv import Spike, Unleashed, HiFive1, PicoRV32, RV32IMC
+from riscv import Spike, Unleashed, HiFive1, PicoRV32, \
+     RV32I, RV32IM, RV32IAC, RV32IMAC, RV32IMAFC, RV32IMAFDC, \
+     RV64IM, RV64IMC, RV64IMAC, RV64IMFC, RV64IMAFDC
 
 # visium
 from visium import Visium
@@ -115,6 +117,12 @@ def build_configs(target):
         t = CortexM7F()
     elif target == 'cortex-m7df':
         t = CortexM7DF()
+    elif target == 'cortex-m23':
+        t = CortexM23()
+    elif target == 'cortex-m33f':
+        t = CortexM33F()
+    elif target == 'cortex-m33df':
+        t = CortexM33DF()
     elif target == 'leon2' or target == 'leon':
         t = Leon2()
     elif target == 'leon3':
@@ -151,6 +159,30 @@ def build_configs(target):
         t = PicoRV32()
     elif target == 'rv32imc':
         t = RV32IMC()
+    elif target == 'rv32i':
+        t = RV32I()
+    elif target == 'rv32im':
+        t = RV32IM()
+    elif target == 'rv32iac':
+        t = RV32IAC()
+    elif target == 'rv32imac':
+        t = RV32IMAC()
+    elif target == 'rv32imafc':
+        t = RV32IMAFC()
+    elif target == 'rv32imafdc':
+        t = RV32IMAFDC()
+    elif target == 'rv64im':
+        t = RV64IM()
+    elif target == 'rv64imc':
+        t = RV64IMC()
+    elif target == 'rv64imac':
+        t = RV64IMAC()
+    elif target == 'rv64imafc':
+        t = RV64IMAFC()
+    elif target == 'rv64imfc':
+        t = RV64IMFC()
+    elif target == 'rv64imafdc':
+        t = RV64IMAFDC()
     elif target == 'x86-linux':
         t = X86Native()
     elif target == 'x86-windows':
