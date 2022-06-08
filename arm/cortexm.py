@@ -1680,7 +1680,12 @@ class RP2040Target(RP2040):
         # Check if the base name (without -smp suffix) is one of the
         # targets supported by this class
         self._name = name
-        base_name = name.removesuffix('-smp')
+
+        if name.endswith('-smp'):
+            base_name = name[:-len('-smp')]
+        else:
+            base_name = name
+
         if base_name not in self._target_properties:
             raise RuntimeError(f"Unknown RP2040 target: {name}")
 
