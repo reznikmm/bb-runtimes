@@ -17,10 +17,31 @@ from pikeos import AArch64PikeOS5, ArmPikeOS, ArmPikeOS42, ArmPikeOS5, \
     PPCPikeOS5
 
 # Cortex-M runtimes
-from arm.cortexm import Stm32, Stm32l, Sam, SmartFusion2, LM3S, Microbit, \
-     NRF52840, NRF52832, MicrosemiM1, Stm32F0, RP2040Target, \
-     CortexM0, CortexM0P, CortexM1, CortexM3, CortexM4, CortexM4F, \
-     CortexM7F, CortexM7DF, CortexM23, CortexM33F, CortexM33DF
+from arm.cortexm import (
+    Stm32,
+    Stm32l,
+    Sam,
+    SmartFusion2,
+    LM3S,
+    Microbit,
+    NRF52840,
+    NRF52832,
+    NRF52833,
+    MicrosemiM1,
+    Stm32F0,
+    RP2040Target,
+    CortexM0,
+    CortexM0P,
+    CortexM1,
+    CortexM3,
+    CortexM4,
+    CortexM4F,
+    CortexM7F,
+    CortexM7DF,
+    CortexM23,
+    CortexM33F,
+    CortexM33DF,
+)
 
 # Cortex-A/R runtimes
 from arm.cortexar import AM64xR5, TMS570, Rpi2, Rpi2Mc, Zynq7000, ZynqmpR5
@@ -134,7 +155,9 @@ def build_configs(target):
         t = LM3S()
     elif target == 'microbit':
         t = Microbit()
-    elif target == 'nrf52840':
+    elif target == "nrf52833":
+        t = NRF52833()
+    elif target == "nrf52840":
         t = NRF52840()
     elif target == 'nrf52832':
         t = NRF52832()
