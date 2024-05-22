@@ -342,7 +342,7 @@ class CortexM0CommonArchSupport(ArmV6MTarget):
     def compiler_switches(self):
         # The required compiler switches
         return ('-mlittle-endian', '-mthumb', '-msoft-float',
-                '-mcpu=cortex-m0')
+                '-mcpu=cortex-m0', "-fno-auto-inc-dec")
 
     @property
     def has_fpu(self):
@@ -575,7 +575,7 @@ class CortexM1CommonArchSupport(ArmV6MTarget):
     def compiler_switches(self):
         # The required compiler switches
         return ('-mlittle-endian', '-mthumb', '-mfloat-abi=soft',
-                '-mcpu=cortex-m1')
+                '-mcpu=cortex-m1', '-fno-auto-inc-dec')
 
     @property
     def has_fpu(self):
@@ -644,7 +644,7 @@ class NRF51(ArmV6MTarget):
     def compiler_switches(self):
         # The required compiler switches
         return ('-mlittle-endian', '-mthumb', '-mfloat-abi=soft',
-                '-mcpu=cortex-m0')
+                '-mcpu=cortex-m0', '-fno-auto-inc-dec')
 
     @property
     def system_ads(self):
@@ -1188,7 +1188,7 @@ class CortexM0(ArmV6MTarget):
     def compiler_switches(self):
         # The required compiler switches
         return ('-mlittle-endian', '-mthumb', '-mfloat-abi=soft',
-                '-mcpu=cortex-m0')
+                '-mcpu=cortex-m0', '-fno-auto-inc-dec')
 
     @property
     def system_ads(self):
@@ -1204,7 +1204,7 @@ class CortexM0P(CortexM0):
     def compiler_switches(self):
         # The required compiler switches
         return ('-mlittle-endian', '-mthumb', '-mfloat-abi=soft',
-                '-mcpu=cortex-m0plus')
+                '-mcpu=cortex-m0plus', '-fno-auto-inc-dec')
 
 
 class CortexM1(ArmV6MTarget):
@@ -1224,7 +1224,7 @@ class CortexM1(ArmV6MTarget):
     def compiler_switches(self):
         # The required compiler switches
         return ('-mlittle-endian', '-mthumb', '-mfloat-abi=soft',
-                '-mcpu=cortex-m1')
+                '-mcpu=cortex-m1', '-fno-auto-inc-dec')
 
     @property
     def system_ads(self):
