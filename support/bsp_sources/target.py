@@ -372,7 +372,7 @@ class Target(TargetConfiguration, ArchSupport):
 
             ret += blank + \
                 '"-nostartfiles", "-nolibc", ' + \
-                '"-Wl,--start-group,-lgnarl,-lgnat,-lc,-lgcc,-lgcc_eh,--end-group",'
+                '"-Wl,--start-group,-lgnarl,-lgnat,-lc,-lgcc,--end-group",'
 
         # Add the user script path first, so that they have precedence
         ret += '\n' + blank + '"-L${RUNTIME_DIR(ada)}/ld_user"'
