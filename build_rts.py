@@ -140,6 +140,8 @@ def build_configs(target):
         t = Stm32(target)
     elif target == 'openmv2':
         t = Stm32(target)
+    elif target == 'wifimcu':
+        t = Stm32(target)
     elif target == 'tms570':
         # by default, the TMS570LS3137 HDK board
         t = TMS570('tms570ls31')

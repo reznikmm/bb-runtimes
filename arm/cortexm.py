@@ -903,6 +903,10 @@ stm32_board_configuration = {
     'stm32f769disco':    {'STM32_Main_Clock_Frequency': '200_000_000',
                           'STM32_HSE_Clock_Frequency': '25_000_000',
                           'STM32_FLASH_Latency': '6'},
+
+    'wifimcu':           {'STM32_Main_Clock_Frequency': '100_000_000',
+                          'STM32_HSE_Clock_Frequency': '26_000_000',
+                          'STM32_FLASH_Latency': '3'},
     }
 
 
@@ -963,6 +967,8 @@ class Stm32(ArmV7MTarget):
             self.mcu = 'stm32f40x'
         elif self.board in ['nucleo_f401re']:
             self.mcu = 'stm32f401'
+        elif self.board in ['wifimcu']:
+            self.mcu = 'stm32f411'
         elif self.board in ['stm32f429disco', 'openmv2']:
             self.mcu = 'stm32f429x'
         elif self.board in ['stm32f469disco']:
@@ -1004,6 +1010,9 @@ class Stm32(ArmV7MTarget):
 
         elif self.mcu in ['stm32f401']:
             self.add_gnat_source('arm/stm32/stm32f401/s-stm32.adb')
+
+        elif self.mcu in ['stm32f411']:
+            self.add_gnat_source('arm/stm32/stm32f411/s-stm32.adb')
 
         elif self.mcu in ['stm32f429x',
                           'stm32f469x']:
