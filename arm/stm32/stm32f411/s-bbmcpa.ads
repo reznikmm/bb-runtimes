@@ -2,11 +2,11 @@
 --                                                                          --
 --                  GNAT RUN-TIME LIBRARY (GNARL) COMPONENTS                --
 --                                                                          --
---            S Y S T E M . B B . B O A R D _ P A R A M E T E R S           --
+--              S Y S T E M . B B . M C U _ P A R A M E T E R S             --
 --                                                                          --
 --                                  S p e c                                 --
 --                                                                          --
---                   Copyright (C) 2016-2020, AdaCore                       --
+--                      Copyright (C) 2016, AdaCore                         --
 --                                                                          --
 -- GNAT is free software;  you can  redistribute it  and/or modify it under --
 -- terms of the  GNU General Public License as published  by the Free Soft- --
@@ -32,26 +32,23 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
---  This package defines board parameters for the "${Board_Name}"
+--  This package defines MCU parameters for the STM32F411 family
 
-package System.BB.Board_Parameters is
+with Interfaces.STM32;
+with Interfaces.STM32.PWR;
+
+package System.BB.MCU_Parameters is
    pragma No_Elaboration_Code_All;
-   pragma Pure;
+   pragma Preelaborate;
+   use type Interfaces.STM32.Bit;
 
-   --------------------
-   -- Hardware clock --
-   --------------------
+   Number_Of_Interrupts : constant := 85;
 
-   Main_Clock_Frequency : constant := "${STM32_Main_Clock_Frequency}";
-   --  Optimal frequency of the system clock. Note that the STM32F411 can go
-   --  up to 200 MHz, but all other STM32F40x and STM32F41x MCUs can only do
-   --  168 MHz.
+   procedure PWR_Initialize;
 
-   HSE_Clock_Frequency : constant := "${STM32_HSE_Clock_Frequency}";
-   --  Frequency of High Speed External clock.
+   procedure PWR_Overdrive_Enable;
 
-   FLASH_Latency : constant := "${STM32_FLASH_Latency}";
-   PLLP_Value    : constant := 2;
-   PLLQ_Value    : constant := Main_Clock_Frequency * PLLP_Value / 48_000_000;
+   function Is_PWR_Stabilized return Boolean
+     is (Interfaces.STM32.PWR.PWR_Periph.CSR.VOSRDY = 1);
 
-end System.BB.Board_Parameters;
+end System.BB.MCU_Parameters;
