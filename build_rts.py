@@ -66,6 +66,9 @@ from riscv import Spike, PolarFireSOC, HiFive1, \
 # visium
 from visium import Visium
 
+# xtensa
+from xtensa import Xtensa
+
 # x86_64
 from x86_64 import X8664Generic
 
@@ -216,6 +219,9 @@ def build_configs(target):
     # Visium elf
     elif target == 'mcm':
         t = Visium()
+    # Xtensa elf
+    elif target == 'esp32':
+        t = Xtensa()
     # Risc-V
     elif target == 'spike':
         t = Spike()

@@ -30,7 +30,7 @@ all_scenarios = {
     'Is_RTP': ['no', 'yes'],
     # CPU architecture
     'CPU_Family': ['arm', 'aarch64', 'leon', 'powerpc', 'powerpc64',
-                   'x86', 'x86_64', 'riscv32', 'riscv64'],
+                   'x86', 'x86_64', 'riscv32', 'riscv64', 'xtensa'],
     # Word size of target
     'Target_Word_Size': ['32', '64'],
     # FPU presence
